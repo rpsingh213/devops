@@ -1,0 +1,993 @@
+{
+  "documentInfo": {
+    "documentName": "IAR 829 - Roaming SL- OB Barring",
+    "documentType": "IDD",
+    "author": "Ravi Pratap Singh",
+    "testCaseVersion": "1.0",
+    "generatedDate": "2026-01-12",
+    "generatedBy": "Digital COE Gen AI Team"
+  },
+  "testCases": [
+    {
+      "testId": "TC-001",
+      "testCaseName": "Collection Barring - New Commands for Roaming Subscriber on 2G/3G",
+      "description": "Verify that new collection barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on 2G/3G network when IAR switch is ON and subscriber has outstanding balance",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on 2G/3G network technology",
+        "Subscriber has outstanding balance exceeding threshold",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with outstanding balance currently roaming on 2G/3G network",
+        "Step 2: Trigger collection barring order from OMS for the subscriber",
+        "Step 3: Verify OMS sends the barring request to AAM without BB829 identifier",
+        "Step 4: Capture the command sent from AAM to NHLR",
+        "Step 5: Verify the command format matches the new barring command specification",
+        "Step 6: Verify the barring is applied successfully on the network",
+        "Step 7: Validate that the subscriber can still receive incoming SMS while roaming"
+      ],
+      "expectedResults": "New collection barring command is sent from AAM to NHLR. The subscriber is barred but can still receive incoming SMS and OTPs while roaming for mobile banking purposes. The barring command format matches the new specification defined in BPT.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Barring with New Commands"
+    },
+    {
+      "testId": "TC-002",
+      "testCaseName": "Collection Barring - New Commands for Roaming Subscriber on LTE",
+      "description": "Verify that new collection barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on LTE network when IAR switch is ON",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network technology",
+        "Subscriber has outstanding balance exceeding threshold",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with outstanding balance currently roaming on LTE network",
+        "Step 2: Trigger collection barring order from OMS for the subscriber",
+        "Step 3: Verify OMS sends the barring request to AAM without BB829 identifier",
+        "Step 4: Capture the command sent from AAM to NHLR",
+        "Step 5: Verify the command format matches the new barring command specification for LTE",
+        "Step 6: Verify the barring is applied successfully on the network",
+        "Step 7: Validate that the subscriber can still receive incoming SMS while roaming"
+      ],
+      "expectedResults": "New collection barring command is sent from AAM to NHLR for LTE network. The subscriber is barred but can still receive incoming SMS and OTPs while roaming. The barring command format matches the new specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Barring with New Commands"
+    },
+    {
+      "testId": "TC-003",
+      "testCaseName": "Collection Barring - New Commands for Roaming Subscriber on LTE with VoLTE/VoWiFi",
+      "description": "Verify that new collection barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on LTE with VoLTE/VoWiFi when IAR switch is ON",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network with VoLTE/VoWiFi enabled",
+        "Subscriber has outstanding balance exceeding threshold",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with outstanding balance currently roaming on LTE with VoLTE/VoWiFi",
+        "Step 2: Trigger collection barring order from OMS for the subscriber",
+        "Step 3: Verify OMS sends the barring request to AAM without BB829 identifier",
+        "Step 4: Capture the command sent from AAM to NHLR",
+        "Step 5: Verify the command format matches the new barring command specification for VoLTE/VoWiFi",
+        "Step 6: Verify the barring is applied successfully on the network",
+        "Step 7: Validate that the subscriber can still receive incoming SMS while roaming",
+        "Step 8: Validate VoLTE/VoWiFi specific barring behavior is as expected"
+      ],
+      "expectedResults": "New collection barring command is sent from AAM to NHLR for LTE with VoLTE/VoWiFi. The subscriber is barred but can still receive incoming SMS and OTPs while roaming.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Barring with New Commands"
+    },
+    {
+      "testId": "TC-004",
+      "testCaseName": "Collection Barring - New Commands for Local Subscriber on 2G/3G",
+      "description": "Verify that new collection barring commands are sent from AAM to NHLR for a local postpaid subscriber on 2G/3G network when IAR switch is ON",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and located locally (not roaming)",
+        "Subscriber is on 2G/3G network technology",
+        "Subscriber has outstanding balance exceeding threshold"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with outstanding balance located locally on 2G/3G network",
+        "Step 2: Trigger collection barring order from OMS for the subscriber",
+        "Step 3: Verify OMS sends the barring request to AAM without BB829 identifier",
+        "Step 4: Capture the command sent from AAM to NHLR",
+        "Step 5: Verify the command format matches the new barring command specification",
+        "Step 6: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "New collection barring command is sent from AAM to NHLR for local 2G/3G subscriber. The barring is applied successfully according to the new command specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Barring with New Commands"
+    },
+    {
+      "testId": "TC-005",
+      "testCaseName": "Collection Unbarring - New Commands for Roaming Subscriber",
+      "description": "Verify that new collection unbarring commands are sent from AAM to NHLR when unbarring a roaming postpaid subscriber who was barred after IAR deployment",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber was barred using new commands after IAR deployment",
+        "Subscriber is currently roaming internationally",
+        "Outstanding balance has been cleared"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming subscriber who was barred using new commands after IAR deployment",
+        "Step 2: Clear the outstanding balance for the subscriber",
+        "Step 3: Trigger unbarring order from OMS for the subscriber",
+        "Step 4: Verify OMS sends the unbarring request to AAM without BB829 identifier (reason code other than BB829)",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new unbarring command specification",
+        "Step 7: Verify the unbarring is applied successfully on the network",
+        "Step 8: Validate that the subscriber has full service restored"
+      ],
+      "expectedResults": "New collection unbarring command is sent from AAM to NHLR. The subscriber is unbarred and full service is restored. The unbarring command format matches the new specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Unbarring with New Commands"
+    },
+    {
+      "testId": "TC-006",
+      "testCaseName": "Spending Limit Barring - New Commands for Roaming Subscriber on 2G/3G",
+      "description": "Verify that new SL barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on 2G/3G when spending limit is breached",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on 2G/3G network technology",
+        "Subscriber has a defined spending limit",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on 2G/3G network with defined spending limit",
+        "Step 2: Simulate usage that causes the subscriber to breach their spending limit",
+        "Step 3: Trigger SL barring order from system for the subscriber",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new SL barring command specification",
+        "Step 7: Verify the barring is applied successfully on the network",
+        "Step 8: Validate that the subscriber can still receive incoming SMS while roaming"
+      ],
+      "expectedResults": "New SL barring command is sent from AAM to NHLR. The subscriber is barred due to spending limit breach but can still receive incoming SMS and OTPs while roaming for mobile banking purposes.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Barring with New Commands"
+    },
+    {
+      "testId": "TC-007",
+      "testCaseName": "Spending Limit Barring - New Commands for Roaming Subscriber on LTE",
+      "description": "Verify that new SL barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on LTE when spending limit is breached",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network technology",
+        "Subscriber has a defined spending limit",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on LTE network with defined spending limit",
+        "Step 2: Simulate usage that causes the subscriber to breach their spending limit",
+        "Step 3: Trigger SL barring order from system for the subscriber",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new SL barring command specification for LTE",
+        "Step 7: Verify the barring is applied successfully on the network",
+        "Step 8: Validate that the subscriber can still receive incoming SMS while roaming"
+      ],
+      "expectedResults": "New SL barring command is sent from AAM to NHLR for LTE subscriber. The subscriber is barred but can still receive incoming SMS and OTPs while roaming.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Barring with New Commands"
+    },
+    {
+      "testId": "TC-008",
+      "testCaseName": "Spending Limit Barring - New Commands for Roaming Subscriber on LTE with VoLTE/VoWiFi",
+      "description": "Verify that new SL barring commands are sent from AAM to NHLR for a roaming postpaid subscriber on LTE with VoLTE/VoWiFi when spending limit is breached",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network with VoLTE/VoWiFi enabled",
+        "Subscriber has a defined spending limit",
+        "Incoming SMS while roaming is enabled on network side"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on LTE with VoLTE/VoWiFi with defined spending limit",
+        "Step 2: Simulate usage that causes the subscriber to breach their spending limit",
+        "Step 3: Trigger SL barring order from system for the subscriber",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new SL barring command specification for VoLTE/VoWiFi",
+        "Step 7: Verify the barring is applied successfully on the network",
+        "Step 8: Validate that the subscriber can still receive incoming SMS while roaming"
+      ],
+      "expectedResults": "New SL barring command is sent from AAM to NHLR for LTE with VoLTE/VoWiFi subscriber. The subscriber is barred but can still receive incoming SMS and OTPs while roaming.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Barring with New Commands"
+    },
+    {
+      "testId": "TC-009",
+      "testCaseName": "Spending Limit Barring - New Commands for Local Subscriber on LTE",
+      "description": "Verify that new SL barring commands are sent from AAM to NHLR for a local postpaid subscriber on LTE when spending limit is breached",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and located locally (not roaming)",
+        "Subscriber is on LTE network technology",
+        "Subscriber has a defined spending limit"
+      ],
+      "testSteps": [
+        "Step 1: Identify a local postpaid subscriber on LTE network with defined spending limit",
+        "Step 2: Simulate usage that causes the subscriber to breach their spending limit",
+        "Step 3: Trigger SL barring order from system for the subscriber",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new SL barring command specification",
+        "Step 7: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "New SL barring command is sent from AAM to NHLR for local LTE subscriber. The barring is applied successfully according to the new command specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Barring with New Commands"
+    },
+    {
+      "testId": "TC-010",
+      "testCaseName": "Spending Limit Unbarring - New Commands for Roaming Subscriber",
+      "description": "Verify that new SL unbarring commands are sent from AAM to NHLR when unbarring a roaming subscriber who was barred for SL breach after IAR deployment",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber was barred for SL breach using new commands after IAR deployment",
+        "Subscriber is currently roaming internationally",
+        "Spending limit has been increased or reset"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming subscriber who was barred for SL breach using new commands after IAR deployment",
+        "Step 2: Increase or reset the spending limit for the subscriber",
+        "Step 3: Trigger SL unbarring order from system for the subscriber",
+        "Step 4: Verify the unbarring request is sent to AAM without BB829 identifier",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new SL unbarring command specification",
+        "Step 7: Verify the unbarring is applied successfully on the network",
+        "Step 8: Validate that the subscriber has full service restored"
+      ],
+      "expectedResults": "New SL unbarring command is sent from AAM to NHLR. The subscriber is unbarred and full service is restored. The unbarring command format matches the new specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Unbarring with New Commands"
+    },
+    {
+      "testId": "TC-011",
+      "testCaseName": "Fraud Barring in Roaming - New Commands on 2G/3G",
+      "description": "Verify that new fraud barring commands are sent from AAM to NHLR for a roaming subscriber on 2G/3G network when fraud is detected",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on 2G/3G network technology",
+        "Fraud detection system is active"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on 2G/3G network",
+        "Step 2: Trigger fraud detection for the subscriber (simulate fraud activity)",
+        "Step 3: Initiate fraud barring order for the subscriber while roaming",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new fraud barring command specification for roaming",
+        "Step 7: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "New fraud barring command is sent from AAM to NHLR for roaming 2G/3G subscriber. The fraud barring is applied successfully according to the new command specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Fraud Barring in Roaming with New Commands"
+    },
+    {
+      "testId": "TC-012",
+      "testCaseName": "Fraud Barring in Roaming - New Commands on LTE",
+      "description": "Verify that new fraud barring commands are sent from AAM to NHLR for a roaming subscriber on LTE network when fraud is detected",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network technology",
+        "Fraud detection system is active"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on LTE network",
+        "Step 2: Trigger fraud detection for the subscriber (simulate fraud activity)",
+        "Step 3: Initiate fraud barring order for the subscriber while roaming",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new fraud barring command specification for LTE roaming",
+        "Step 7: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "New fraud barring command is sent from AAM to NHLR for roaming LTE subscriber. The fraud barring is applied successfully according to the new command specification.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Fraud Barring in Roaming with New Commands"
+    },
+    {
+      "testId": "TC-013",
+      "testCaseName": "Fraud Barring in Roaming - New Commands on LTE with VoLTE/VoWiFi",
+      "description": "Verify that new fraud barring commands are sent from AAM to NHLR for a roaming subscriber on LTE with VoLTE/VoWiFi when fraud is detected",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and currently roaming internationally",
+        "Subscriber is on LTE network with VoLTE/VoWiFi enabled",
+        "Fraud detection system is active"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming postpaid subscriber on LTE with VoLTE/VoWiFi",
+        "Step 2: Trigger fraud detection for the subscriber (simulate fraud activity)",
+        "Step 3: Initiate fraud barring order for the subscriber while roaming",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new fraud barring command specification for VoLTE/VoWiFi roaming",
+        "Step 7: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "New fraud barring command is sent from AAM to NHLR for roaming LTE with VoLTE/VoWiFi subscriber. The fraud barring is applied successfully.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Fraud Barring in Roaming with New Commands"
+    },
+    {
+      "testId": "TC-014",
+      "testCaseName": "Fraud Unbarring in Roaming - New Commands",
+      "description": "Verify that new fraud unbarring commands are sent from AAM to NHLR when unbarring a roaming subscriber who was barred for fraud after IAR deployment",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber was barred for fraud in roaming using new commands after IAR deployment",
+        "Subscriber is currently roaming internationally",
+        "Fraud case has been resolved"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming subscriber who was barred for fraud using new commands after IAR deployment",
+        "Step 2: Resolve the fraud case for the subscriber",
+        "Step 3: Trigger fraud unbarring order for the subscriber",
+        "Step 4: Verify the unbarring request is sent to AAM without BB829 identifier",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the new fraud unbarring command specification",
+        "Step 7: Verify the unbarring is applied successfully on the network",
+        "Step 8: Validate that the subscriber has full service restored"
+      ],
+      "expectedResults": "New fraud unbarring command is sent from AAM to NHLR. The subscriber is unbarred and full service is restored while roaming.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Fraud Unbarring in Roaming with New Commands"
+    },
+    {
+      "testId": "TC-015",
+      "testCaseName": "Migration Solution - Unbarring with BB829 Identifier for Pre-Deployment Barring",
+      "description": "Verify that old unbarring commands are sent when unbarring a subscriber who was barred before IAR deployment using the BB829 identifier",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber was barred using old commands before IAR deployment",
+        "Subscriber barring order exists in the system from prior deployment"
+      ],
+      "testSteps": [
+        "Step 1: Identify a subscriber who was barred using old commands before IAR deployment",
+        "Step 2: Clear the outstanding balance or resolve the barring reason for the subscriber",
+        "Step 3: Trigger unbarring order from OMS for the subscriber",
+        "Step 4: Verify OMS includes the 'BB829' identifier in the reason code field",
+        "Step 5: Verify AAM receives the unbarring request with BB829 identifier",
+        "Step 6: Capture the command sent from AAM to NHLR",
+        "Step 7: Verify the command format matches the OLD unbarring command specification (not new)",
+        "Step 8: Verify the unbarring is applied successfully on the network",
+        "Step 9: Validate that there is no misalignment on the network side"
+      ],
+      "expectedResults": "OMS includes BB829 identifier in reason code. AAM sends OLD unbarring commands to NHLR. The subscriber is successfully unbarred without manual intervention and no network misalignment occurs.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.2 - Migration/Bridging Solution"
+    },
+    {
+      "testId": "TC-016",
+      "testCaseName": "Migration Solution - BB829 Identifier Not Sent for New Barring Orders",
+      "description": "Verify that BB829 identifier is NOT included for barring orders initiated after IAR deployment",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active with outstanding balance",
+        "No prior barring exists for this subscriber before IAR deployment"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with outstanding balance (no prior barring before IAR deployment)",
+        "Step 2: Trigger new collection barring order from OMS for the subscriber",
+        "Step 3: Verify OMS does NOT include 'BB829' identifier in the reason code field",
+        "Step 4: Verify AAM receives the barring request without BB829 identifier",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the NEW barring command specification"
+      ],
+      "expectedResults": "OMS does NOT include BB829 identifier for new barring orders. AAM sends NEW barring commands to NHLR as expected.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.2 - Migration/Bridging Solution"
+    },
+    {
+      "testId": "TC-017",
+      "testCaseName": "ON/OFF Switch - OFF Mode Sends Old Commands for Barring",
+      "description": "Verify that when IAR switch is set to OFF, old barring commands are sent from AAM to NHLR",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to OFF",
+        "Postpaid subscriber is active with outstanding balance",
+        "Subscriber is currently roaming internationally"
+      ],
+      "testSteps": [
+        "Step 1: Verify IAR 829 switch is set to OFF",
+        "Step 2: Identify a roaming postpaid subscriber with outstanding balance",
+        "Step 3: Trigger collection barring order from OMS for the subscriber",
+        "Step 4: Verify the barring request is sent to AAM",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the OLD barring command specification (BAU)",
+        "Step 7: Verify the barring is applied successfully on the network"
+      ],
+      "expectedResults": "When IAR switch is OFF, OLD barring commands are sent from AAM to NHLR as per BAU. The functionality operates as before IAR deployment.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.4 - ON/OFF Solution"
+    },
+    {
+      "testId": "TC-018",
+      "testCaseName": "ON/OFF Switch - OFF Mode Sends Old Commands for Unbarring",
+      "description": "Verify that when IAR switch is set to OFF, old unbarring commands are sent from AAM to NHLR regardless of reason code",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to OFF",
+        "Postpaid subscriber is currently barred",
+        "Outstanding balance has been cleared"
+      ],
+      "testSteps": [
+        "Step 1: Verify IAR 829 switch is set to OFF",
+        "Step 2: Identify a barred postpaid subscriber whose balance has been cleared",
+        "Step 3: Trigger unbarring order from OMS for the subscriber",
+        "Step 4: Verify the unbarring request is sent to AAM (reason code value irrelevant when OFF)",
+        "Step 5: Capture the command sent from AAM to NHLR",
+        "Step 6: Verify the command format matches the OLD unbarring command specification (BAU)",
+        "Step 7: Verify the unbarring is applied successfully on the network"
+      ],
+      "expectedResults": "When IAR switch is OFF, OLD unbarring commands are sent from AAM to NHLR regardless of reason code. The functionality operates as before IAR deployment.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.4 - ON/OFF Solution"
+    },
+    {
+      "testId": "TC-019",
+      "testCaseName": "ON/OFF Switch - Default ON Mode Verification",
+      "description": "Verify that IAR 829 is deployed with switch set to ON by default",
+      "preconditions": [
+        "IAR 829 is freshly deployed",
+        "No manual switch configuration has been performed"
+      ],
+      "testSteps": [
+        "Step 1: Deploy IAR 829 in the environment",
+        "Step 2: Access the system configuration for IAR 829 switch",
+        "Step 3: Verify the default value of the switch",
+        "Step 4: Trigger a test barring order",
+        "Step 5: Verify that new commands are sent (confirming ON mode)"
+      ],
+      "expectedResults": "IAR 829 switch is set to ON by default after deployment. New commands are sent for barring/unbarring operations.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.4 - ON/OFF Solution"
+    },
+    {
+      "testId": "TC-020",
+      "testCaseName": "Fraud Barring Non-Roaming Unchanged",
+      "description": "Verify that fraud-related barring/unbarring for non-roaming subscribers remains unchanged with no command modifications",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is active and located locally (not roaming)",
+        "Fraud detection system is active"
+      ],
+      "testSteps": [
+        "Step 1: Identify a local (non-roaming) postpaid subscriber",
+        "Step 2: Trigger fraud detection for the subscriber",
+        "Step 3: Initiate fraud barring order for the subscriber",
+        "Step 4: Capture the command sent from AAM to NHLR",
+        "Step 5: Verify the command format matches the existing (unchanged) fraud barring command specification for non-roaming",
+        "Step 6: Verify the barring is applied as per existing BAU behavior"
+      ],
+      "expectedResults": "For non-roaming fraud barring, existing commands are used with no modifications. The functionality remains as BAU per the assumption in the document.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Fraud non-roaming unchanged)"
+    },
+    {
+      "testId": "TC-021",
+      "testCaseName": "Only Active Services Barred - BAU Verification",
+      "description": "Verify that only currently active services in a subscription are barred or unbarred as per BAU",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber has multiple services (some active, some inactive)",
+        "Subscriber has outstanding balance"
+      ],
+      "testSteps": [
+        "Step 1: Identify a postpaid subscriber with multiple services (Voice, SMS, Data - some active, some inactive)",
+        "Step 2: Document which services are currently active for the subscriber",
+        "Step 3: Trigger collection barring order for the subscriber",
+        "Step 4: Verify the barring commands sent from AAM to NHLR",
+        "Step 5: Verify that only the active services are included in the barring command",
+        "Step 6: Verify inactive services are not affected by the barring",
+        "Step 7: After unbarring, verify only previously barred (active) services are restored"
+      ],
+      "expectedResults": "Only currently active services are barred. Inactive services are not affected. Upon unbarring, only previously barred services are restored. BAU behavior is maintained.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Only active services barred)"
+    },
+    {
+      "testId": "TC-022",
+      "testCaseName": "Roaming Combined Attribute Verification",
+      "description": "Verify that Roaming remains a combined attribute (SMS, Voice, and Data) within BSS with no impact on product catalog",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber has roaming service enabled",
+        "Subscriber is currently roaming"
+      ],
+      "testSteps": [
+        "Step 1: Access the product catalog and verify roaming configuration",
+        "Step 2: Verify roaming is defined as a combined attribute (SMS, Voice, Data)",
+        "Step 3: Trigger a collection barring for a roaming subscriber",
+        "Step 4: Verify the barring command handles roaming as a combined attribute",
+        "Step 5: Verify all roaming services (SMS, Voice, Data) are barred together",
+        "Step 6: Trigger unbarring and verify all roaming services are restored together"
+      ],
+      "expectedResults": "Roaming remains a combined attribute in BSS. All roaming services (SMS, Voice, Data) are handled together during barring/unbarring. No impact on product catalog.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Roaming combined attribute)"
+    },
+    {
+      "testId": "TC-023",
+      "testCaseName": "UAT - Roaming Customer Receives OTP While Barred for Outstanding Balance",
+      "description": "End-to-end UAT to verify that a roaming customer barred for outstanding balance can still receive OTP for mobile banking",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid customer is currently roaming abroad",
+        "Customer has outstanding balance causing collection barring",
+        "Mobile banking app is installed on customer's device",
+        "Incoming SMS while roaming is enabled on network"
+      ],
+      "testSteps": [
+        "Step 1: Customer is roaming abroad with outstanding balance",
+        "Step 2: Collection barring is triggered for the customer due to outstanding balance",
+        "Step 3: Customer opens mobile banking application on their device",
+        "Step 4: Customer initiates a transaction that requires OTP verification",
+        "Step 5: Mobile banking system sends OTP to customer's mobile number",
+        "Step 6: Verify customer receives the OTP SMS on their device while roaming",
+        "Step 7: Customer enters the OTP and completes the transaction",
+        "Step 8: Verify the complete mobile banking transaction is successful"
+      ],
+      "expectedResults": "Despite being barred for outstanding balance, the roaming customer successfully receives OTP SMS and can complete mobile banking transactions. The negative customer experience is eliminated.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Section 1.3 - High-level Solution (OTP for mobile banking)"
+    },
+    {
+      "testId": "TC-024",
+      "testCaseName": "UAT - Roaming Customer Receives OTP While Barred for Spending Limit Breach",
+      "description": "End-to-end UAT to verify that a roaming customer barred for spending limit breach can still receive OTP for mobile banking",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid customer is currently roaming abroad",
+        "Customer has breached their spending limit causing SL barring",
+        "Mobile banking app is installed on customer's device",
+        "Incoming SMS while roaming is enabled on network"
+      ],
+      "testSteps": [
+        "Step 1: Customer is roaming abroad and has exceeded their spending limit",
+        "Step 2: SL barring is triggered for the customer due to spending limit breach",
+        "Step 3: Verify customer's services are barred as per SL barring rules",
+        "Step 4: Customer opens mobile banking application on their device",
+        "Step 5: Customer initiates a funds transfer requiring OTP verification",
+        "Step 6: Mobile banking system sends OTP to customer's mobile number",
+        "Step 7: Verify customer receives the OTP SMS on their device while roaming and barred",
+        "Step 8: Customer enters the OTP and completes the funds transfer"
+      ],
+      "expectedResults": "Despite being barred for spending limit breach, the roaming customer successfully receives OTP SMS and can complete critical mobile banking transactions.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Section 1.3 - High-level Solution (OTP for mobile banking)"
+    },
+    {
+      "testId": "TC-025",
+      "testCaseName": "UAT - Roaming Customer Receives Incoming SMS While Barred",
+      "description": "End-to-end UAT to verify that a roaming customer barred for outstanding balance can receive all types of incoming SMS",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid customer is currently roaming abroad",
+        "Customer has outstanding balance causing collection barring",
+        "Incoming SMS while roaming is enabled on network"
+      ],
+      "testSteps": [
+        "Step 1: Customer is roaming abroad with outstanding balance",
+        "Step 2: Collection barring is triggered for the customer",
+        "Step 3: Send a personal SMS from another number to the barred customer",
+        "Step 4: Verify customer receives the personal SMS while roaming",
+        "Step 5: Send a bank notification SMS to the barred customer",
+        "Step 6: Verify customer receives the bank notification SMS while roaming",
+        "Step 7: Trigger an OTP SMS from any service provider to the customer",
+        "Step 8: Verify customer receives the OTP SMS while roaming"
+      ],
+      "expectedResults": "The barred roaming customer can receive all types of incoming SMS including personal messages, bank notifications, and OTPs. The customer experience is improved.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Section 1.3 - High-level Solution (Incoming SMS)"
+    },
+    {
+      "testId": "TC-026",
+      "testCaseName": "UAT - Customer Service Representative Unbarring Pre-Deployment Barred Customer",
+      "description": "End-to-end UAT from CSR perspective to unbar a customer who was barred before IAR deployment",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Customer was barred using old commands before IAR deployment",
+        "Customer has cleared their outstanding balance",
+        "CSR has access to OMS"
+      ],
+      "testSteps": [
+        "Step 1: Customer calls customer service to request unbarring after clearing balance",
+        "Step 2: CSR accesses the customer account in OMS",
+        "Step 3: CSR verifies the customer was barred before IAR deployment",
+        "Step 4: CSR initiates unbarring process through OMS",
+        "Step 5: Verify OMS automatically identifies the pre-deployment barring and includes BB829 identifier",
+        "Step 6: Verify the unbarring order is processed without manual intervention",
+        "Step 7: CSR confirms to customer that unbarring is complete",
+        "Step 8: Customer verifies full service is restored"
+      ],
+      "expectedResults": "CSR can seamlessly unbar a pre-deployment barred customer without manual intervention. OMS automatically handles the BB829 identifier. Customer service is restored using old unbarring commands.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Section 2.2 - Migration/Bridging Solution"
+    },
+    {
+      "testId": "TC-027",
+      "testCaseName": "UAT - Customer Payment and Automatic Unbarring",
+      "description": "End-to-end UAT to verify that after a barred roaming customer makes payment, they are automatically unbarred with new commands",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Customer was barred after IAR deployment due to outstanding balance",
+        "Customer is currently roaming abroad",
+        "Payment gateway is operational"
+      ],
+      "testSteps": [
+        "Step 1: Customer is roaming abroad and barred for outstanding balance",
+        "Step 2: Customer makes full payment through mobile app/web",
+        "Step 3: Payment is processed and reflected in the billing system",
+        "Step 4: Automatic unbarring process is triggered",
+        "Step 5: Verify unbarring order is sent without BB829 identifier",
+        "Step 6: Verify new unbarring commands are sent from AAM to NHLR",
+        "Step 7: Customer receives notification of service restoration",
+        "Step 8: Customer verifies full service is restored while still roaming"
+      ],
+      "expectedResults": "After payment, the customer is automatically unbarred using new unbarring commands. Full service is restored seamlessly while the customer is still roaming abroad.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Collection Unbarring with New Commands"
+    },
+    {
+      "testId": "TC-028",
+      "testCaseName": "UAT - End-to-End Collection Barring and Unbarring Lifecycle",
+      "description": "Complete lifecycle UAT from barring to unbarring for a roaming customer with collection issues",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid customer is currently roaming abroad",
+        "Customer has active voice, SMS, and data services",
+        "Billing system is operational"
+      ],
+      "testSteps": [
+        "Step 1: Customer accumulates outstanding balance beyond threshold while roaming",
+        "Step 2: Collection system triggers barring order for the customer",
+        "Step 3: Verify new barring commands are sent from AAM to NHLR",
+        "Step 4: Verify customer is barred but can still receive incoming SMS",
+        "Step 5: Customer attempts outgoing voice call - verify it is blocked",
+        "Step 6: Customer receives OTP for online transaction - verify it is received",
+        "Step 7: Customer makes partial payment - verify barring status unchanged",
+        "Step 8: Customer makes full payment clearing outstanding balance",
+        "Step 9: Verify automatic unbarring is triggered with new commands",
+        "Step 10: Customer verifies all services are fully restored"
+      ],
+      "expectedResults": "Complete barring/unbarring lifecycle works seamlessly. Customer can receive SMS while barred. After payment, full service is restored using new commands.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Complete Solution End-to-End"
+    },
+    {
+      "testId": "TC-029",
+      "testCaseName": "Negative Test - Network SMS Prerequisite Not Met",
+      "description": "Verify system behavior when incoming SMS while roaming is NOT enabled on network side",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Incoming SMS while roaming is NOT enabled on network side (prerequisite not met)",
+        "Postpaid subscriber is roaming and barred"
+      ],
+      "testSteps": [
+        "Step 1: Ensure incoming SMS while roaming is disabled on network side",
+        "Step 2: Trigger collection barring for a roaming subscriber",
+        "Step 3: Verify new barring commands are sent from AAM to NHLR",
+        "Step 4: Send an SMS to the barred roaming subscriber",
+        "Step 5: Observe the SMS delivery behavior",
+        "Step 6: Document the failure scenario"
+      ],
+      "expectedResults": "Even though AAM sends correct new barring commands, the subscriber cannot receive incoming SMS because the network prerequisite is not met. This validates the dependency on network configuration.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Prerequisite for incoming SMS)"
+    },
+    {
+      "testId": "TC-030",
+      "testCaseName": "Negative Test - Mixed Old and New Commands Incompatibility",
+      "description": "Verify that attempting to unbar with new commands when barring was done with old commands causes issues (validating the need for BB829)",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Subscriber was barred using old commands before IAR deployment",
+        "BB829 identifier is missing or corrupted in the unbarring request"
+      ],
+      "testSteps": [
+        "Step 1: Identify a subscriber barred with old commands before IAR deployment",
+        "Step 2: Simulate unbarring request without BB829 identifier (as if it's a new barring)",
+        "Step 3: Observe AAM sending new unbarring commands to NHLR",
+        "Step 4: Verify the network response to incompatible commands",
+        "Step 5: Document the error/failure behavior",
+        "Step 6: Verify subscriber remains barred or has partial service"
+      ],
+      "expectedResults": "When BB829 is missing for pre-deployment barred subscribers, new unbarring commands are sent which are incompatible with old barring. This results in failed unbarring or network misalignment, validating the importance of the BB829 migration solution.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.2 - Migration/Bridging Solution (Validating risk)"
+    },
+    {
+      "testId": "TC-031",
+      "testCaseName": "Boundary Test - Subscriber at Exact Spending Limit Threshold",
+      "description": "Verify system behavior when subscriber usage is exactly at the spending limit threshold",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber has a defined spending limit of X amount",
+        "Subscriber is currently roaming"
+      ],
+      "testSteps": [
+        "Step 1: Identify a roaming subscriber with spending limit of X",
+        "Step 2: Generate usage that brings subscriber to exactly X (at threshold, not exceeding)",
+        "Step 3: Verify if SL barring is triggered or not at exact threshold",
+        "Step 4: Generate additional minimal usage to exceed X by smallest increment",
+        "Step 5: Verify SL barring is triggered after exceeding threshold",
+        "Step 6: Verify new barring commands are sent from AAM to NHLR",
+        "Step 7: Verify subscriber can receive incoming SMS after barring"
+      ],
+      "expectedResults": "At exact threshold, barring may or may not trigger depending on business rules (document behavior). After exceeding threshold, SL barring is triggered with new commands. Incoming SMS works while barred.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.1 - Spending Limit Barring"
+    },
+    {
+      "testId": "TC-032",
+      "testCaseName": "Integration Test - AAM to NHLR Command Format Validation",
+      "description": "Verify that the new command format from AAM to NHLR matches the specification provided by NTG",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "BPT with new commands has been gathered",
+        "Network side (NHLR) is ready to accept new commands"
+      ],
+      "testSteps": [
+        "Step 1: Review the new command specification from BPT",
+        "Step 2: Trigger a collection barring for a test subscriber",
+        "Step 3: Capture the exact command sent from AAM to NHLR",
+        "Step 4: Compare command format with BPT specification",
+        "Step 5: Verify all mandatory parameters are present and correctly formatted",
+        "Step 6: Verify command is accepted by NHLR without errors",
+        "Step 7: Repeat for unbarring command",
+        "Step 8: Repeat for all barring types (Collection, SL, Fraud in roaming)"
+      ],
+      "expectedResults": "All new commands from AAM exactly match the BPT specification. Commands are accepted by NHLR without parsing or format errors. Integration is successful.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.3 - Mandatory BPT"
+    },
+    {
+      "testId": "TC-033",
+      "testCaseName": "Integration Test - OMS to AAM BB829 Identifier Transmission",
+      "description": "Verify that OMS correctly transmits BB829 identifier to AAM in the reason code field",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Subscriber was barred before IAR deployment",
+        "OMS and AAM integration is operational"
+      ],
+      "testSteps": [
+        "Step 1: Identify a pre-deployment barred subscriber in OMS",
+        "Step 2: Initiate unbarring process through OMS",
+        "Step 3: Capture the request sent from OMS to AAM",
+        "Step 4: Verify 'BB829' is present in the reason code field",
+        "Step 5: Verify the exact format and position of BB829 identifier",
+        "Step 6: Verify AAM correctly parses and interprets the BB829 identifier",
+        "Step 7: Verify AAM triggers old unbarring commands based on BB829"
+      ],
+      "expectedResults": "OMS correctly includes BB829 in reason code field. AAM successfully parses and interprets BB829. Old unbarring commands are sent based on the identifier.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 2.2 - Migration/Bridging Solution"
+    },
+    {
+      "testId": "TC-034",
+      "testCaseName": "Regression Test - Other Flows Unchanged (BAU)",
+      "description": "Verify that all other flows except collection, SL barring/unbarring and roaming fraud barring/unbarring continue to function as BAU",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Various non-impacted flows are available for testing"
+      ],
+      "testSteps": [
+        "Step 1: Test subscriber activation flow - verify BAU behavior",
+        "Step 2: Test subscriber suspension flow (non-collection) - verify BAU behavior",
+        "Step 3: Test plan change flow - verify BAU behavior",
+        "Step 4: Test add-on activation flow - verify BAU behavior",
+        "Step 5: Test billing flow - verify BAU behavior",
+        "Step 6: Test non-roaming fraud barring - verify existing commands (BAU)",
+        "Step 7: Document any deviations from expected BAU behavior"
+      ],
+      "expectedResults": "All non-impacted flows continue to function exactly as before IAR deployment. No regression is observed in any BAU functionality.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Other flows unchanged)"
+    },
+    {
+      "testId": "TC-035",
+      "testCaseName": "Regression Test - Collection and Service Barring Attributes Unchanged",
+      "description": "Verify that existing collection and service barring attributes remain as per BAU",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Collection barring attributes are defined in system",
+        "Service barring attributes are defined in system"
+      ],
+      "testSteps": [
+        "Step 1: Review current collection barring attributes in system configuration",
+        "Step 2: Compare with pre-deployment collection barring attributes",
+        "Step 3: Verify no changes to collection barring attribute definitions",
+        "Step 4: Review current service barring attributes in system configuration",
+        "Step 5: Compare with pre-deployment service barring attributes",
+        "Step 6: Verify no changes to service barring attribute definitions",
+        "Step 7: Trigger a barring and verify attributes are applied as per BAU"
+      ],
+      "expectedResults": "All collection and service barring attributes remain unchanged from pre-deployment configuration. Attributes are applied consistently as per BAU.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Attributes unchanged)"
+    },
+    {
+      "testId": "TC-036",
+      "testCaseName": "UAT - International Subscriber Travels and Gets Barred While Roaming",
+      "description": "Complete end-to-end UAT simulating a customer traveling abroad and getting barred for outstanding balance",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid customer with roaming service is identified",
+        "Customer has moderate outstanding balance",
+        "Incoming SMS while roaming is enabled on network"
+      ],
+      "testSteps": [
+        "Step 1: Customer departs from home country with phone in airplane mode",
+        "Step 2: Customer arrives at international destination",
+        "Step 3: Customer enables roaming on their device",
+        "Step 4: Verify customer registers on foreign network successfully",
+        "Step 5: Customer's outstanding balance exceeds threshold (or was already exceeded)",
+        "Step 6: Collection barring is triggered for the customer",
+        "Step 7: Verify new barring commands are processed",
+        "Step 8: Customer attempts to make an outgoing call - verify blocked",
+        "Step 9: Customer attempts to send SMS - verify blocked",
+        "Step 10: Someone sends SMS to customer - verify customer receives it",
+        "Step 11: Customer receives OTP from bank - verify successful receipt",
+        "Step 12: Customer completes banking transaction using OTP"
+      ],
+      "expectedResults": "Customer traveling abroad is properly barred but can receive incoming SMS including OTPs. The customer can continue using mobile banking for critical transactions despite being barred.",
+      "priority": "High",
+      "testType": "UAT",
+      "relatedRequirement": "IAR 829 - Complete Solution User Journey"
+    },
+    {
+      "testId": "TC-037",
+      "testCaseName": "Performance Test - Multiple Concurrent Barring Operations",
+      "description": "Verify system performance when multiple barring/unbarring operations are processed concurrently",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Load testing environment is set up",
+        "Multiple test subscribers are available"
+      ],
+      "testSteps": [
+        "Step 1: Prepare 100 test subscribers for concurrent barring",
+        "Step 2: Trigger simultaneous collection barring for all 100 subscribers",
+        "Step 3: Monitor system performance (response time, throughput)",
+        "Step 4: Verify all barring commands are sent correctly to NHLR",
+        "Step 5: Verify no command failures or timeouts occur",
+        "Step 6: Repeat for 100 concurrent unbarring operations",
+        "Step 7: Document performance metrics"
+      ],
+      "expectedResults": "System handles concurrent barring/unbarring operations efficiently. All commands are processed correctly without failures. Performance is within acceptable thresholds.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 3.2 - Performance (N/A but validated)"
+    },
+    {
+      "testId": "TC-038",
+      "testCaseName": "Negative Test - Order Initiated Before Deployment with New Commands",
+      "description": "Verify that orders initiated before IAR deployment are handled correctly and new commands are not applied",
+      "preconditions": [
+        "IAR 829 has just been deployed",
+        "There are pending barring orders initiated before deployment"
+      ],
+      "testSteps": [
+        "Step 1: Identify barring orders initiated before IAR deployment that are still pending",
+        "Step 2: Allow the pending orders to process post-deployment",
+        "Step 3: Verify the command type used for these orders",
+        "Step 4: Confirm old commands are used for pre-deployment initiated orders",
+        "Step 5: Verify no mixing of old and new commands occurs"
+      ],
+      "expectedResults": "Orders initiated before deployment use old commands even if processed after deployment. New commands are only used for orders initiated after deployment.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 1.2 - Assumptions (Orders after deployment)"
+    },
+    {
+      "testId": "TC-039",
+      "testCaseName": "Technology Transition Test - Subscriber Moving Between 2G/3G and LTE While Barred",
+      "description": "Verify barring behavior when subscriber transitions between network technologies while barred",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Postpaid subscriber is barred while roaming",
+        "Subscriber's device supports both 2G/3G and LTE"
+      ],
+      "testSteps": [
+        "Step 1: Subscriber is barred while connected to 2G/3G network while roaming",
+        "Step 2: Subscriber moves to an area with LTE coverage",
+        "Step 3: Device automatically switches to LTE network",
+        "Step 4: Verify barring status is maintained across technology change",
+        "Step 5: Verify incoming SMS capability is maintained on LTE",
+        "Step 6: Subscriber moves back to 2G/3G area",
+        "Step 7: Verify barring and SMS capability consistent across transition"
+      ],
+      "expectedResults": "Barring status is maintained consistently when subscriber transitions between 2G/3G and LTE. Incoming SMS capability remains functional across technology changes.",
+      "priority": "Medium",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 11 - Test Guidelines (Cross-technology)"
+    },
+    {
+      "testId": "TC-040",
+      "testCaseName": "Risk Validation - Profile Misalignment for Pre-Deployment Barred Customers",
+      "description": "Verify that proper migration solution prevents profile misalignment on network side for pre-deployment barred customers",
+      "preconditions": [
+        "IAR 829 is deployed and switch is set to ON",
+        "Multiple subscribers were barred before IAR deployment",
+        "BB829 migration solution is active"
+      ],
+      "testSteps": [
+        "Step 1: Identify 10 subscribers barred before IAR deployment",
+        "Step 2: Capture their current network profile status from NHLR",
+        "Step 3: Trigger unbarring for all 10 subscribers",
+        "Step 4: Verify OMS includes BB829 for each unbarring request",
+        "Step 5: Verify AAM sends old unbarring commands",
+        "Step 6: Capture network profile status after unbarring",
+        "Step 7: Compare before and after profiles to verify proper restoration",
+        "Step 8: Verify no profile misalignment exists on network side"
+      ],
+      "expectedResults": "All pre-deployment barred customers are properly unbarred using old commands via BB829 solution. No profile misalignment occurs on NHLR. The risk identified in Section 13 is mitigated.",
+      "priority": "High",
+      "testType": "Functional",
+      "relatedRequirement": "IAR 829 - Section 13 - Risks (Profile misalignment)"
+    }
+  ],
+  "testSummary": {
+    "totalTestCases": 40,
+    "functionalTestCases": 30,
+    "uatTestCases": 10,
+    "highPriority": 25,
+    "mediumPriority": 15,
+    "lowPriority": 0,
+    "coverageAreas": [
+      "Collection Barring/Unbarring (Local and Roaming)",
+      "Spending Limit Barring/Unbarring (Local and Roaming)",
+      "Fraud Barring/Unbarring in Roaming",
+      "Migration/Bridging Solution with BB829 Identifier",
+      "ON/OFF Switch Functionality",
+      "Technology Coverage (2G/3G, LTE, VoLTE/VoWiFi)",
+      "End-to-End User Journeys",
+      "Integration Points (OMS-AAM-NHLR)",
+      "Regression and BAU Validation",
+      "Negative and Boundary Testing",
+      "Risk Mitigation Validation"
+    ]
+  }
+}
