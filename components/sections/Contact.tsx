@@ -3,29 +3,43 @@ import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/content/profile";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 
+type Channel = {
+  label: string;
+  value: string;
+  href: string;
+  Icon: typeof Mail;
+};
+
 export function Contact() {
-  const channels = [
-    {
+  const channels: Channel[] = [];
+
+  if (profile.social.linkedin) {
+    channels.push({
       label: "LinkedIn",
       value: "/in/monika-rana-2a0112120",
       href: profile.social.linkedin,
       Icon: Linkedin,
-    },
-    profile.social.github
-      ? { label: "GitHub", value: profile.social.github.replace("https://", ""), href: profile.social.github, Icon: Github }
-      : null,
-    {
+    });
+  }
+
+  const github = profile.social.github as string;
+  if (github) {
+    channels.push({
+      label: "GitHub",
+      value: github.replace("https://", ""),
+      href: github,
+      Icon: Github,
+    });
+  }
+
+  if (profile.email) {
+    channels.push({
       label: "Email",
       value: profile.email,
       href: profile.social.email,
       Icon: Mail,
-    },
-  ].filter(Boolean) as Array<{
-    label: string;
-    value: string;
-    href: string;
-    Icon: typeof Mail;
-  }>;
+    });
+  }
 
   return (
     <SectionWrapper
