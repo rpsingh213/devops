@@ -12,7 +12,7 @@ export function Skills() {
       id="skills"
       eyebrow="Toolbox"
       title="Skills & Practices"
-      subtitle="Hands-on engineering plus the leadership and Agile craft to ship at scale."
+      subtitle="Patent practice, search analytics, and the technical fluency to read claims like an engineer."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map(([group, items], idx) => (

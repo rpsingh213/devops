@@ -12,7 +12,7 @@ export function Certifications() {
       id="certifications"
       eyebrow="Credentials"
       title="Certifications"
-      subtitle="Professional certifications across Agile, Architecture, Leadership and Computer Science."
+      subtitle="Registered with the Indian Patent Office to draft, file, and prosecute patent applications."
     >
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert, idx) => {

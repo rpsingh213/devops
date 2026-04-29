@@ -12,7 +12,7 @@ export function Experience() {
       id="experience"
       eyebrow="Career"
       title="Experience"
-      subtitle="A decade-plus of building telecom-grade software at Amdocs — moving from individual contributor to multi-team lead across geographies."
+      subtitle="Seven-plus years across IP boutiques — from research analyst to leading patent prosecution mandates for Indian and international clients."
     >
       <ol className="relative space-y-8 border-l border-border/70 pl-6 sm:pl-8">
         {experience.map((job, idx) => (
