@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, MapPin, Sparkles } from "lucide-react";
 import { profile } from "@/content/profile";
 
 export function Hero() {
@@ -57,12 +57,13 @@ export function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a
-              href={profile.resumeUrl}
-              download
+              href={profile.mediumUrl}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-primary/40"
             >
-              <Download className="h-4 w-4" />
-              Download Résumé
+              <BookOpen className="h-4 w-4" />
+              Link to Medium
             </a>
             <Link
               href={profile.social.linkedin}

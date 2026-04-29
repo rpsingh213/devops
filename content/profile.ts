@@ -8,24 +8,24 @@
 export const profile = {
   name: "Ravi Pratap Singh",
   shortName: "Ravi",
-  headline: "Team Lead • Scrum Master • Product Owner @ Amdocs",
+  headline: "Domain Solution Expert @ Amdocs • Java • Telecom BSS",
   tagline:
-    "Building reliable Java backends and high-performing Agile teams for global Telecom BSS programs.",
+    "Translating business problems into technical solutions — APIs, IDDs, and grooming JIRA backlogs for global Telecom BSS programs, accelerated with GenAI & Copilot.",
   location: "Gurugram, Haryana, India",
-  totalExperience: "12+ years",
-  email: "ravi.example@gmail.com",
-  resumeUrl: "/resume.pdf",
+  totalExperience: "13+ years",
+  email: "ravipratap@outlook.com",
+  mediumUrl: "https://ravipsingh13.medium.com/",
   social: {
     linkedin: "https://www.linkedin.com/in/ravipsingh123",
     github: "https://github.com/",
     twitter: "",
-    email: "mailto:ravi.example@gmail.com",
+    email: "mailto:ravipratap@outlook.com",
   },
-  about: `Seasoned Software Team Lead, Java Expert, Agile Practitioner, and Telecom BSS Specialist with over 12 years of hands-on delivery experience at Amdocs.
+  about: `Seasoned Domain Solution Expert, Java practitioner, Agile leader, and Telecom BSS specialist with 13+ years of hands-on delivery experience at Amdocs.
 
-I have led cross-functional Scrum teams across India and the Philippines, designed APIs and microservice solutions, and shipped large, mission-critical features for Tier-1 telecom operators in South-East Asia. My day-to-day spans the full SDLC — from solutioning, IA reviews, and technical assessments with BAs and Product Owners, through development, code reviews, every test phase, production readiness, deployment, and post-go-live stabilization.
+I now operate at the intersection of business and engineering — analyzing customer requirements, shaping product customizations, designing APIs and IDDs, and grooming JIRA backlogs that development teams can execute against. Earlier, I led cross-functional Scrum teams across India and the Philippines, designed microservice solutions, and shipped large, mission-critical features for Tier-1 telecom operators in South-East Asia.
 
-Beyond the code, I am passionate about mentoring engineers, breaking silos between teams, and turning ambiguous problems into shippable increments. Recognized with Amdocs' Leadership Award for delivering complex programs under tight timelines.`,
+I am passionate about mentoring engineers, breaking silos between teams, and turning ambiguous problems into shippable increments. I lean heavily on GenAI and Copilot to accelerate solutioning and SDLC activities. Recognized with Amdocs' Leadership Award for delivering complex programs under tight timelines.`,
 } as const;
 
 export type Experience = {
@@ -43,17 +43,48 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     company: "Amdocs",
-    role: "Software Development Implementation Team Lead",
-    location: "Gurugram, Haryana, India",
-    start: "Sep 2024",
+    role: "Domain Solution Expert",
+    location: "Gurugram, Haryana, India (On-site)",
+    start: "Feb 2026",
     end: null,
     duration: "Present",
     description:
-      "Leading cross-functional Scrum team and assisting the solution team in designing the right solutions for global telecom customers.",
+      "Convert customer business needs into shippable technical solutions — analyzing requirements, designing APIs and IDDs, and grooming JIRA backlogs that development teams can execute against.",
     highlights: [
-      "Drive solutioning, IA reviews, design, technical assessments, and effort estimation in close partnership with BAs and POs for EPICs",
-      "Own end-to-end delivery: development, UT/ST/UAT, production readiness, deployment, and post-go-live stabilization",
-      "Mentor engineers and remove cross-team blockers to keep sprint velocity and quality high",
+      "Business analysis — identify customer requirements and shape how they can be achieved through product customization",
+      "Analyze requirements and share high-level solutions and effort estimations with stakeholders",
+      "Author Impact Assessment and solutioning documents for proposed changes",
+      "Design APIs for inter-system interfacing — ensuring loose coupling and reusability",
+      "Create IDDs (Interface Design Documents) for new and customized APIs delivered as part of solutions",
+      "Walk customers through solutions, gather feedback, iterate, finalize, and obtain formal approvals",
+      "Groom the backlog for development teams — create EPICs, Features, and User Stories in JIRA aligned with the solution design",
+      "Apply GenAI and Copilot across solutioning and SDLC activities to accelerate delivery and improve quality",
+    ],
+    stack: [
+      "Solution Design",
+      "Business Analysis",
+      "API Design",
+      "IDD Authoring",
+      "JIRA",
+      "EPICs / Features / User Stories",
+      "Effort Estimation",
+      "GenAI",
+      "GitHub Copilot",
+    ],
+  },
+  {
+    company: "Amdocs",
+    role: "Software Development Implementation Team Lead",
+    location: "Gurugram, Haryana, India",
+    start: "Sep 2024",
+    end: "Feb 2026",
+    duration: "1 yr 5 mos",
+    description:
+      "Led cross-functional Scrum team and assisted the solution team in designing the right solutions for global telecom customers.",
+    highlights: [
+      "Drove solutioning, IA reviews, design, technical assessments, and effort estimation in close partnership with BAs and POs for EPICs",
+      "Owned end-to-end delivery: development, UT/ST/UAT, production readiness, deployment, and post-go-live stabilization",
+      "Mentored engineers and removed cross-team blockers to keep sprint velocity and quality high",
     ],
     stack: ["Java", "REST", "SOAP", "Microservices", "Scrum", "Agile", "Telecom BSS"],
   },
