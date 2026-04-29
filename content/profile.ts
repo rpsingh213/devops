@@ -13,13 +13,13 @@ export const profile = {
     "Helping innovators secure and defend their inventions across global jurisdictions — patent prosecution, prior-art analytics, and patentability strategy.",
   location: "Delhi, India",
   totalExperience: "7+ years",
-  email: "monika.example@gmail.com",
+  email: "Rana.monika109@gmail.com",
   resumeUrl: "/resume.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/monika-rana-2a0112120/",
     github: "",
     twitter: "",
-    email: "mailto:monika.example@gmail.com",
+    email: "mailto:Rana.monika109@gmail.com",
   },
   about: `Registered Indian Patent Agent (IN/PA 4365) and Managing Associate at LEXORBIS, with 7+ years of focused practice in patent prosecution and IP strategy.
 
